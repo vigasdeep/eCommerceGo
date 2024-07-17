@@ -1,4 +1,4 @@
 #!/bin/sh
 
 go fmt .
-go test .    
+go test -v .    
