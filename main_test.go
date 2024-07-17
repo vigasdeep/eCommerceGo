@@ -10,12 +10,12 @@ import (
 
 // TestPingEndpoint tests the /ping endpoint
 func TestPingEndpoint(t *testing.T) {
-  router := SetupRouter()
+	router := SetupRouter()
 
-  w := httptest.NewRecorder()
-  req, _ := http.NewRequest("GET", "/ping", nil)
-  router.ServeHTTP(w, req)
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("GET", "/ping", nil)
+	router.ServeHTTP(w, req)
 
-  assert.Equal(t, http.StatusOK, w.Code)
-  assert.JSONEq(t, `{"message": "pong"}`, w.Body.String())
+	assert.Equal(t, http.StatusOK, w.Code)
+	assert.JSONEq(t, `{"message": "pong"}`, w.Body.String())
 }
