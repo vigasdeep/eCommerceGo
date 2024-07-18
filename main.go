@@ -2,6 +2,24 @@ package main
 
 import "ecommerce-backend/router"
 
+// @title           Swagger Example API
+// @version         0.1
+// @description     This is a ecommerce backend built in Go.
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   API Support
+// @contact.url    http://www.swagger.io/support
+// @contact.email  vigasdeep@gmail.com
+
+// @license.name  MIT
+
+// @host      localhost:8080
+// @BasePath  /
+
+// @securityDefinitions.basic  BasicAuth
+
+// @externalDocs.description  OpenAPI
+// @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
 	r := router.SetupRouter()
 

@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
 type Product struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
@@ -17,7 +18,14 @@ var products = []Product{
 	{ID: 1, Name: "Product Pen", Price: 100},
 	{ID: 2, Name: "Product Pencil", Price: 200},
 }
+// GetProducts godoc
+// @Summary      Get Products
+// @Description  Get all Products
+// @Tags         accounts
+// @Accept       json
+// @Produce      json
 
+// @Router       /products [get]
 func GetProducts(c *gin.Context) {
 	c.JSON(http.StatusOK, products)
 }
