@@ -1,8 +1,10 @@
 package main
 
-func main() {
-	r := SetupRouter()
+import "ecommerce-backend/router"
 
-	// Start the server
-	r.Run(":8080") // listen and serve on 0.0.0.0:8080
+func main() {
+  r := router.SetupRouter()
+
+  // Start the server
+  r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }

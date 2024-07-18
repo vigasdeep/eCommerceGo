@@ -1,4 +1,4 @@
-package main
+package handlers
 
 import (
 	"net/http"
@@ -18,11 +18,11 @@ var products = []Product{
 	{ID: 2, Name: "Product Pencil", Price: 200},
 }
 
-func getProducts(c *gin.Context) {
+func GetProducts(c *gin.Context) {
 	c.JSON(http.StatusOK, products)
 }
 
-func getProduct(c *gin.Context) {
+func GetProduct(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	for _, product := range products {
 		if product.ID == id {
@@ -33,7 +33,7 @@ func getProduct(c *gin.Context) {
 	c.JSON(http.StatusNotFound, gin.H{"message": "Product not found"})
 }
 
-func createProduct(c *gin.Context) {
+func CreateProduct(c *gin.Context) {
 	var newProduct Product
 	if err := c.BindJSON(&newProduct); err != nil {
 		return
@@ -43,7 +43,7 @@ func createProduct(c *gin.Context) {
 	c.JSON(http.StatusCreated, newProduct)
 }
 
-func updateProduct(c *gin.Context) {
+func UpdateProduct(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var updatedProduct Product
 	if err := c.BindJSON(&updatedProduct); err != nil {
@@ -59,7 +59,7 @@ func updateProduct(c *gin.Context) {
 	c.JSON(http.StatusNotFound, gin.H{"message": "Product not found"})
 }
 
-func deleteProduct(c *gin.Context) {
+func DeleteProduct(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	for i, product := range products {
 		if product.ID == id {

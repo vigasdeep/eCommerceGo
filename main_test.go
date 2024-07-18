@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ecommerce-backend/router"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -10,7 +11,7 @@ import (
 
 // TestPingEndpoint tests the /ping endpoint
 func TestPingEndpoint(t *testing.T) {
-	router := SetupRouter()
+	router := router.SetupRouter()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
