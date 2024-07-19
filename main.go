@@ -1,6 +1,12 @@
 package main
 
-import "ecommerce-backend/router"
+import (
+	"ecommerce-backend/config"
+	"ecommerce-backend/router"
+	"log"
+
+	"github.com/joho/godotenv"
+)
 
 // @title           Swagger Example API
 // @version         0.1
@@ -21,6 +27,14 @@ import "ecommerce-backend/router"
 // @externalDocs.description  OpenAPI
 // @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
+	err := godotenv.Load()
+    if err != nil {
+        log.Fatalf("Error loading .env file")
+    }
+
+    config.InitDB()
+    InitializeDatabase()
+
 	r := router.SetupRouter()
 
 	// Start the server
