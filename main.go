@@ -28,12 +28,12 @@ import (
 // @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
 	err := godotenv.Load()
-    if err != nil {
-        log.Fatalf("Error loading .env file")
-    }
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
 
-    config.InitDB()
-    InitializeDatabase()
+	config.InitDB()
+	InitializeDatabase()
 
 	r := router.SetupRouter()
 
