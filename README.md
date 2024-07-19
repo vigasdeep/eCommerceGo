@@ -10,5 +10,8 @@
 * Implement caching strategies to improve system performance.
 * monitoring and alerting solutions for the microservices.
 
+### Setup
+
+- first, add postgres DATABASE_URL to .env file 
 
 
