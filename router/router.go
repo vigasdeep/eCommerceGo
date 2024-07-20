@@ -18,6 +18,7 @@ func SetupRouter() *gin.Engine {
 		})
 	})
 
+	// Auth routes
 	r.POST("/register", handlers.Register)
     r.POST("/login", handlers.Login)
 
@@ -31,7 +32,6 @@ func SetupRouter() *gin.Engine {
         auth.PUT("/products/:id", handlers.UpdateProduct)
         auth.DELETE("/products/:id", handlers.DeleteProduct)
     }
-	// Import the handlers package
 
 	return r
 }

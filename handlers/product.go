@@ -5,6 +5,7 @@ import (
 	"ecommerce-backend/models"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -51,36 +52,60 @@ func GetProduct(c *gin.Context) {
 }
 
 func CreateProduct(c *gin.Context) {
-	var product models.Product
+    var product models.Product
     if err := c.ShouldBindJSON(&product); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
     }
 
-    result := config.DB.Create(&product)
-    if result.Error != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
+    email, _ := c.Get("email")
+    var user models.User
+    if err := config.DB.Where("email = ?", email).First(&user).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found"})
         return
     }
 
-    c.JSON(http.StatusCreated, product)
+    product.UserID = user.ID
+
+    if err := config.DB.Create(&product).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+        return
+    }
+
+    c.JSON(http.StatusOK, product)
 }
 
 func UpdateProduct(c *gin.Context) {
-	id := c.Param("id")
+    id, _ := strconv.Atoi(c.Param("id"))
     var product models.Product
-    result := config.DB.First(&product, id)
-    if result.Error != nil {
+
+    if err := config.DB.Where("id = ?", id).First(&product).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Product not found"})
         return
     }
 
+    email, _ := c.Get("email")
+    var user models.User
+    if err := config.DB.Where("email = ?", email).First(&user).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found"})
+        return
+    }
+
+    if product.UserID != user.ID {
+        c.JSON(http.StatusForbidden, gin.H{"error": "You do not have permission to update this product"})
+        return
+    }
+
     if err := c.ShouldBindJSON(&product); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
     }
 
-    config.DB.Save(&product)
+    if err := config.DB.Save(&product).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+        return
+    }
+
     c.JSON(http.StatusOK, product)
 }
 
