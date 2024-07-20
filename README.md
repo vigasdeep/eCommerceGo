@@ -10,5 +10,8 @@
 * Implement caching strategies to improve system performance.
 * monitoring and alerting solutions for the microservices.
 
+### Setup
+
+- rename env.example  to .env and set env vars appropriately.
 
 
