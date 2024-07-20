@@ -22,7 +22,7 @@ func GetOrderItems(c *gin.Context) {
 }
 func CreateOrderItem(c *gin.Context) {
     var orderItem models.OrderItem
-    orderID, _ := strconv.Atoi(c.Param("id")) 
+    orderID, _ := strconv.Atoi(c.Param("order_id")) 
 
     if err := c.ShouldBindJSON(&orderItem); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
