@@ -10,7 +10,7 @@ func InitializeDatabase() {
 	db := config.DB
 
 	// Automatically migrate the schema
-	err := db.AutoMigrate(&models.Product{}, &models.User{}, &models.Order{}, &models.OrderItem{})
+	err := db.AutoMigrate(&models.User{}, &models.Product{}, &models.Order{}, &models.OrderItem{})
 
 	if err != nil {
 		log.Fatalf("Failed to migrate database: %v\n", err)
