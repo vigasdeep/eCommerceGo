@@ -10,7 +10,7 @@ func InitializeDatabase() {
 	db := config.DB
 
 	// Automatically migrate the schema
-	err := db.AutoMigrate(&models.Product{}, &models.User{})
+	err := db.AutoMigrate(&models.Product{}, &models.User{}, &models.Order{}, &models.OrderItem{})
 
 	if err != nil {
 		log.Fatalf("Failed to migrate database: %v\n", err)
@@ -23,7 +23,7 @@ func InitializeDatabase() {
 func seedProducts() {
 	db := config.DB
 
-	// Example of seeding data
+	// TODO: add more seed data here for other tables
 	products := []models.Product{
 		{Name: "Sample Product 1", Price: 100},
 		{Name: "Sample Product 2", Price: 200},
