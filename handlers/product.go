@@ -17,10 +17,7 @@ type Product struct {
 }
 var products []models.Product
 
-// var products = []Product{
-// 	{ID: 1, Name: "Product Pen", Price: 100},
-// 	{ID: 2, Name: "Product Pencil", Price: 200},
-// }
+
 // GetProducts godoc
 // @Summary      Get Products
 // @Description  Get all Products
