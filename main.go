@@ -8,13 +8,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// @title           Swagger Example API
+// @title          	eCommerceGo Backend
 // @version         0.1
 // @description     This is a ecommerce backend built in Go.
-// @termsOfService  http://swagger.io/terms/
-
-// @contact.name   API Support
-// @contact.url    http://www.swagger.io/support
 // @contact.email  vigasdeep@gmail.com
 
 // @license.name  MIT
@@ -25,7 +21,7 @@ import (
 // @securityDefinitions.basic  BasicAuth
 
 // @externalDocs.description  OpenAPI
-// @externalDocs.url          https://swagger.io/resources/open-api/
+
 func main() {
 	err := godotenv.Load()
 	if err != nil {
