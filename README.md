@@ -1,6 +1,6 @@
  ## e-Commerce Backend in Golang
 
-### Planned Features 
+### Features 
 * e-commerce application that handles user authentication, product management, and order processing.
 * Microservices Architecture
 * Concurrency Control (written in go)
