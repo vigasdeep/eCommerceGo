@@ -31,6 +31,15 @@ func SetupRouter() *gin.Engine {
         auth.POST("/products", handlers.CreateProduct)
         auth.PUT("/products/:id", handlers.UpdateProduct)
         auth.DELETE("/products/:id", handlers.DeleteProduct)
+		
+		auth.POST("/orders", handlers.CreateOrder)
+        auth.PUT("/orders/:id", handlers.UpdateOrderStatus)
+
+		auth.POST("/orders/:order_id/items", handlers.CreateOrderItem)
+        auth.PUT("/orders/items/:item_id", handlers.UpdateOrderItem)
+        auth.DELETE("/orders/items/:item_id", handlers.DeleteOrderItem)
+        auth.GET("/orders/:order_id/items", handlers.GetOrderItems)
+
     }
 
 	return r

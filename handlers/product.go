@@ -58,14 +58,12 @@ func CreateProduct(c *gin.Context) {
         return
     }
 
-    email, _ := c.Get("email")
-    var user models.User
-    if err := config.DB.Where("email = ?", email).First(&user).Error; err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found"})
-        return
-    }
-
-    product.UserID = user.ID
+	userID, exists := c.Get("userID")
+	if !exists {
+	    c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found in context"})
+	    return
+	}
+	product.UserID = userID.(uint)
 
     if err := config.DB.Create(&product).Error; err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -84,14 +82,12 @@ func UpdateProduct(c *gin.Context) {
         return
     }
 
-    email, _ := c.Get("email")
-    var user models.User
-    if err := config.DB.Where("email = ?", email).First(&user).Error; err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found"})
-        return
-    }
-
-    if product.UserID != user.ID {
+	userID, exists := c.Get("userID")
+	if !exists {
+	    c.JSON(http.StatusInternalServerError, gin.H{"error": "User not found in context"})
+	    return
+	}
+    if product.UserID != userID {
         c.JSON(http.StatusForbidden, gin.H{"error": "You do not have permission to update this product"})
         return
     }
