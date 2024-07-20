@@ -11,7 +11,7 @@ func InitializeDatabase() {
 
 	// Automatically migrate the schema
 	err := db.AutoMigrate(&models.Product{}, &models.User{})
-	
+
 	if err != nil {
 		log.Fatalf("Failed to migrate database: %v\n", err)
 	}

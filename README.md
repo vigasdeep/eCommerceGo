@@ -12,6 +12,6 @@
 
 ### Setup
 
-- first, add postgres DATABASE_URL to .env file 
+- rename env.example  to .env and set env vars appropriately.
 
 
