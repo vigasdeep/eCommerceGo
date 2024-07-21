@@ -46,7 +46,7 @@ go mod tidy
 To run the application locally:
 
 ```bash
-go run main.go
+go run .
 ```
 
 To run using Docker:
