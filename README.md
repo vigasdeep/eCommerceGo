@@ -32,9 +32,9 @@ Clone the repository:
 git clone https://github.com/vigasdeep/eCommerceGo.git
 cd eCommerceGo
 ```
-configure .env and add values appropriately 
+rename configure .env and add values appropriately 
 ```bash
-mv env.example  to .env 
+mv env.example .env 
 ```
 Install Go dependencies:
 
