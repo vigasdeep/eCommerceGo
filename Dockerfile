@@ -3,6 +3,7 @@ FROM golang:1.22 as builder
 
 # Create a directory where our application will be placed.
 WORKDIR /app
+LABEL org.opencontainers.image.source="https://github.com/vigasdeep/eCommerceGo"
 
 # Copy the source code and the .env file into the container.
 COPY . .
