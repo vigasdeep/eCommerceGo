@@ -61,7 +61,7 @@ The application provides several RESTful endpoints, grouped by functionality:
 
 ### User Authentication
 
-- **POST** `/api/auth/register`: Register a new user.
+- **POST** `/register`: Register a new user.
     - **Request Body Example**:
       ```json
       {
@@ -76,7 +76,7 @@ The application provides several RESTful endpoints, grouped by functionality:
       }
       ```
 
-- **POST** `/api/auth/login`: Login for existing users.
+- **POST** `/login`: Login for existing users.
     - **Request Body Example**:
       ```json
       {
