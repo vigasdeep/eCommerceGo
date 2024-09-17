@@ -1,5 +1,5 @@
 # Start from the official Golang image to have a proper environment.
-FROM golang:1.22@sha256:2bd56f00ff47baf33e64eae7996b65846c7cb5e0a46e0a882ef179fd89654afa as builder
+FROM golang:1.23@sha256:8e529b64d382182bb84f201dea3c72118f6ae9bc01d27190ffc5a54acf0091d2 as builder
 
 # Create a directory where our application will be placed.
 WORKDIR /app
